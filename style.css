@@ -8,7 +8,9 @@ body {
 }
 
 header {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -95,4 +97,30 @@ footer {
     width: 20px;
     height: 20px;
     color: #999;
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.sidebar {
+    width: 200px;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+.hashtag {
+    cursor: pointer;
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.hashtag:hover {
+    background-color: #d6d6d6;
+}
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
 }

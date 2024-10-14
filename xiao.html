@@ -13,6 +13,15 @@
     <link rel="stylesheet" href="style.css">
     <script src="search.js"></script>
     <script src="data_source.js"></script>
+    <script src="page_card.js"></script>
+
+    <!-- 添加favicon链接 -->
+    <link rel="icon" href="https://help.xiaobot.net/logo.png" type="image/png">
+    <link rel="shortcut icon" href="https://help.xiaobot.net/logo.png" type="image/png">
+
+    <style>
+        
+    </style>
 </head>
 <script type="application/ld+json">
     {
@@ -29,58 +38,82 @@
     }
     </script>
 <body>
-    <header style="position: sticky; top: 0; background-color: white; z-index: 100;">
+    <header style="position: fixed; top: 0; left: 0; right: 0; background-color: white; z-index: 100;">
         <nav style="display: flex; align-items: center; justify-content: left; color: #c9c2c2; height: 64px;">
-            <img src="data:image/png;base64,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" alt="Logo" style="width: 48px; height: 48px; margin: 10px; border-radius: 5px;">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAp/SURBVHgB7d29b13lHcDxp1U8OCGWsBRXSoaQwpQYqQwunVBIBoao7QSCP6ATUtulDLCkUmFoJ5DCAlLZQMkUUJA6BEKXQjK0UhzEkDcPiRQjJRImLxKRqJ/re3Ec39i+957znHvv7/ORokoZYqvi+T7nOec5z/nZySOHf0xASD9PQFgCAIEJAAQmABCYAEBgAgCBCQAEJgAQmABAYAIAgQkABCYAEJgAQGACAIEJAAQmABCYAEBgAgCBCQAEJgAQmABAYAIAgQkABCYAEJgAQGACAIEJAAQmABCYAEBgAgCBCQAEJgAQmABAYAIAgQkABCYAEJgAQGACAIEJAAS2LVGrF06cTFWaP/ZOunbmdIIquAKAwAQAArMEYEPTB55O42bp6uX0w+3bCQFgA5O7ZtLc0b+lcfPvV/8gAG2WABCYAEBgAgCBCQAEJgAQmABAYAIAgQkABGYjUNueg4fTKHj8wGyqw80L59PdbxcTsQhA2+yrf0yjYM/BQ60/VfOWYUyWABCYAEBgAgCBCQAEJgAQmABAYAIAgQkABGYjEEUsnv0q3b/T3zFcuyve+HR30Y7HDgGgiIVPP043L8ynXuVzCXfXsPORFZYADLVtO3Yk6iMADLWJHY+lKnnhaS0BYKjtfGJfqtI96/81BIChVvXrz74HsJYAMNSmKr4CsARYSwAYWvncg/wUoEoeAa4lAAylPPCffOmVVLWlhcuJVfYBMHTyB0nzCU1Vz/7Z0tUriVUC0Hb9zGepDlVvYsmbae7VsI69++2N1KQ82+cBP71/Nk3OVD/ws6UrV9wEfIgAtJ0/9naqQ9UByKEax7P78sCfrunA046lBbP/w9wDIIwbZ79MrCUAhHHr697fRRh3AkAI+W1E6//1BIAQfPOgOwFg7OXNP4vnvkqsJwCMvUsnPkx0JwCMtTz7X6tpj8c4EADGmtl/YzYCtT31YvX7zuswM/dsLVtkF899mb4bs22yK5umzP4bEYC2J196OY2CmV8/2/pTtfya7DgFIF/6Xzxu9t+MJQBj5/7y8/5zR9/w7v8WCABjJ7/XYfBvjSUAY6Mz84/bvYw6CQBjIb/n/9+/v2Xm75EAMNLyrJ8/OrJw6hN7/fsgAIys/Jgv3+k36/dPABgp+Vz/a1+cNuNXRAAYWvnyPs/ueX2fb+zlzUpO9a2WADAUvvng/TTR/g5gHvg/3LltsBcgAAwFp/U2w0YgCEwAIDBLAIrYc/Bwmt7/dBomF70qLACUUfX3EaogAJYAEJoAQGACAIEJACHdt424xU3AtkvHP1r3dzuf2Ffp8Vt5Z1uvXyEu9TssXb2cIsk7DRGAn3S7I7xn+c51lYMvf9a71zvPw/A7ML4sASAwAYDABAACEwAITAAgMAGAwASAkO45bahFACAwAYDABAACEwBC8k2BFQJASPe9DNTiZSCKyG8gVnnO/94jv03b2t8RoH8CQBHXzpxONy/Mp6rsfv7QQAGwBFhhCcBImtg+2OzvQJAVAsBIcvlfDQFg5ExUMPh9UnyFewBtzx17b93fTVQ8yzx+YLbrz9lIqd8hf5xz8dxXaRRs2272r4oAtE3OzKQSSv2cXn+HiR2PpVExOfOLNKi7395IWAIwgqz/qyMAjJyJ7dvToDwFWCEAjJzJXYMvARwLvkIAGDlVLAHuOg+gRQAYOvnJR/6c+Mxc9+8h5I+lDMLl/ypPAWhcHvA7n/hla8BPLz+m7AzwhVOfdH00OegVgNl/lQDQiPwoLw/4/GdqecB3G9STu7o/Mt2+a7BHqd4EXCUAFJE378zM/aY1w+dBv5X9EDv3rb/Uz1cLg14BeBFolQBQxDOvvZ561e2Fn7xUGNTS1SuJFW4CMrTyTP/wlUIVTwBcAawSAIbazr1rlwFTewd7ApDZBrxKABhqD2/6eWzf4AG4503AnwgARfT77H3qoQE/uWvwl6m8CrxKACii30GXX1/uyE8ApirYBOQewCoBoIh+77znGb9zJoInANUTAIoYZNbt7AwcdAvwoL/HOBIAili6ejn1a3r/063/fXA50P/v4QrgQQJAEfkeQL83AjsDf6qCK4DvBgjROLITsO1fL/4+1eGFEydTleaPvdM6Y38U3VmOwNSO3gdxHvjT+2creQLgEeBargAo5vs+L7/z7r/dzx9Og8pXIN9ZAqwhABQzyODbc/BQGpT1/3oCQDFLDa+/zf7rCQDFND0D37xwPrGWAFDMDw2vwd0AXE8AKOr7hgKQjwGzBFhPACiqqctwNwC7EwCKunlhPjVh8dyXifVsBGqbffVPaRTsfv5QJVtiH3b9zOkig7OzI7D0571cAXQnAG1VPGcuIe+IS/tT5W61Bn+Z2Tkf9b274P/f1v+PZglAcaUH462vm1l2jAIBoLjFs2XX4zfOWv8/igBQXL4PUOoqIN9v6PZ1IVYIAI24VehpQFNPHUaFANCIUo/lPP7bmADQiDwz1/2V3vzvXzvzWeLRBIDG1D04rf03JwA0pu7L81E9OakkAaAxeRlQ10c68uYfNwA3JwA06vrn9SwDLp34MLE5AaBRN2pYBuTZ3/p/awSARu098rtUtbz11wdAtkYAaMyTL75Sy0tYM3PPVvINgQgEgEbkAfrUSy+nOuRXjX/12uuVfEdg3AkAxeWBmQdo3T9j7q9visAmBICiSg5MEdicAFBM/sz3M4UvzTsRcE+gOwGgiG3bd6S5o29W8onvXrUisPyz881B1vrZySOHf0zUdiRY1WcNXj/zWS0n63bblZcHznPvvpeq0MQ5gN1cPP6RTUIPcCZgW10vplQdgDxQR/ENt2EY/Fl+8jA5M5MuHf+wtm3Io8QSgHDy1d6onAJdNwEgpOveFGwRAMLJ7wo4KGSFABCOm4CrBIAibg3Ju/lm/7UEgCKunvq49jMAt8Lsv5YAUMT9O7fTwqlPUpPM/usJAMUsfNrsVYDZfz0BoJh8SEe/VwF59h5kAJv9uxMAiurnKiAP3nNH32ht4134tL+AXP/Cc/9uBICier0KyLH43z/e+mnb7jf/fL/n475bs//nZv9uBIDierkKOH/s7XUfEp0/9k5PEcizv33/3QkAxW31KmD+3bcfebrvViNg9t+YANCIza4C8uDfbODmCGx2Y9DsvzEBoBEbXQVsZfB3bPZ+v9l/YwJAY7pdBfQy+DtyBL754P11f58PTzH7b0wAaMyDVwE5BPlRX78zdv53/vOXP7fW/B0Xj9v4sxkBoFH5KqDznH/Qj3nmpwWdf8fsvzXOBKzZ9IHZVKWl5f/IS332Kp/iW9UhniV/7yz/7j4PtjkBgMAsASAwAYDABAACEwAITAAgMAGAwAQAAhMACEwAIDABgMAEAAITAAhMACAwAYDABAACEwAITAAgMAGAwAQAAhMACEwAIDABgMAEAAITAAhMACAwAYDABAACEwAITAAgMAGAwAQAAhMACEwAIDABgMAEAAITAAhMACAwAYDABAACEwAITAAgMAGAwAQAAhMACEwAIDABgMAEAAITAAhMACAwAYDABAAC+z+234YXopDdbAAAAABJRU5ErkJggg==" alt="Logo" style="width: 48px; height: 48px; margin: 10px; border-radius: 5px;">
             <h1 style="margin-left: 10px; margin-right: 10px; color: #333333; white-space: nowrap;">小报童专栏导航</h1>
-                <h1 style="margin-left: auto; margin-right: 24px; color: #777474; white-space: nowrap; font-size: 18px;">提交专栏</h1>
-
+            <h1 style="margin-left: auto; margin-right: 24px; color: #777474; white-space: nowrap; font-size: 18px;">提交专栏</h1>
         </nav>
     </header>
-    <main>
-        <div>
-            <p class="title" style="margin-top: 5px; margin-bottom: 5px;">小报童专栏导航</p>
-            <p class="subtitle" style=" margin-bottom: 10px;">xiaobot101.com 超过400+ 个小报童专栏，帮助你找到想要的小报童专栏</p>  
-        </div>
-
-        <div class="search-container" style="display: flex; align-items: center; margin-bottom: 10px;">
-            <input type="text" id="searchInput" placeholder="搜索专栏..." oninput="filterAssistants()" style="background-color: white;">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon">
-                <circle cx="11" cy="11" r="8"></circle>  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-        </div>
-
+    
+    <div class="content-wrapper">
+        <aside class="sidebar">
+            <h3>标签筛选</h3>
+            <div style="color: #a39c9c; height: calc(100vh - 64px); overflow-y: auto;" id="hashtagContainer"></div>
+        </aside>
         
-        
-        <section class="assistant-list">
-            <div id="assistantGrid" class="assistant-grid" style="display: flex; flex-wrap: wrap; justify-content: flex-start;">
-                <!-- 卡片内容 -->
+        <main class="main-content" style="position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto;">
+            <div>
+                <p class="title" style="margin-top: 5px; margin-bottom: 5px;">小报童专栏导航</p>
+                <p class="subtitle" style=" margin-bottom: 10px;">xiaobot101.com 超过400+ 个小报童专栏，帮助你找到想要的小报童专栏</p>  
+                <p class="subtitle" style=" margin-bottom: 6px; color: #d8d4d4;">People follow people, not companies. 人们更愿意追随一个活生生的人,而非一个公司。| We're not affiliated with 小报童. </p>  
             </div>
-        </section>
-    </main>
 
-    <footer style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #f4f4f4; padding: 0px 0; text-align: center;">
+            <div class="search-container" style="display: flex; align-items: center; margin-bottom: 10px;">
+                <input type="text" id="searchInput" placeholder="搜索专栏..." oninput="filterAssistants()" style="background-color: white;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon">
+                    <circle cx="11" cy="11" r="8"></circle>  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </div>
+
+            <section class="assistant-list">
+                <div id="assistantGrid" class="assistant-grid" style="display: flex; flex-wrap: wrap; justify-content: flex-start;">
+                    <!-- 卡片内容 -->
+                </div>
+            </section>
+
+            
+        </main>
+    </div>
+
+    <footer style="background-color: #f4f4f4; padding: 20px 0; text-align: center; height: 100px ; bottom: 0; left: 0; right: 0; z-index: 100;">
         <p style="margin-bottom: 10px;">People follow people, not companies. 人们更愿意追随一个活生生的人,而非一个公司。</p>
         <div style="display: flex; justify-content: center;">
             <a href="https://xiaobot.net/" target="_blank" style="margin-right: 20px; color: #808080; text-decoration: none;">小报童官网</a>
             <a href="https://help.xiaobot.net/start.html" target="_blank" style="color: #808080; text-decoration: none;">小报童 101</a>
         </div>
         <hr style="border: none; height: 1px; background-color: #e0e0e0; margin: 10px auto; width: 60%;">
-        <p style="margin-bottom: 5px;font-size: 14px;; color: #a39c9c;">&copy;2024 小报童专栏123. All rights reserved. We're not affiliated with 小报童.</p>
+        <p style="margin-bottom: 5px;font-size: 14px;; color: #a39c9c;">&copy;2024 小报童专栏101. We're not affiliated with 小报童.</p>
     </footer>
 
     <script>
-        // DOM完全加载后再执行脚本
-        document.addEventListener('DOMContentLoaded', function() {
+       
+        // 加载卡片
+        function loadCards() {
             const container = document.getElementById('assistantGrid');
-            if (container && typeof generateListCard === 'function' && Array.isArray(data)) {
-                data.forEach(item => {
-                    const card = generateListCard(item);
-                    container.appendChild(card);
-                });
-            } else {
-                console.error('缺少必要的元素或函数');
+            const dataToUse = filteredData.length > 0 ? filteredData : data;
+            const endIndex = Math.min(currentIndex + cardsPerLoad, dataToUse.length);
+            
+            for (let i = currentIndex; i < endIndex; i++) {
+                const card = generateListCard(dataToUse[i]);
+                container.appendChild(card);
             }
+            
+            currentIndex = endIndex;
+        }
+
+        // 检查滚动位置并加载更多卡片
+        function checkScroll() {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 500) {
+                loadCards();
+            }
+        }
+
+        // DOM完全加载后执行初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            generateHashtags();
+            loadCards(); // 初始加载前20个卡片
+            window.addEventListener('scroll', checkScroll);
         });
     </script>
 </body>
