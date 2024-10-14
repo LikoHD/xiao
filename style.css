@@ -1,0 +1,98 @@
+/* 参考 bilibili 的配色和布局风格 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+}
+
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.assistant-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.assistant-card {
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.assistant-card img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #fb7299;
+    color: #fff;
+    padding: 10px 10px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+  
+#searchInput {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .title {
+    width: 100%;
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+.search-container {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+#searchInput {
+    width: 100%;
+    padding: 12px 80px 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #e8e8e8;
+    border-radius: 30px;
+    font-size: 16px;
+    background-color: #f4f4f4;
+    transition: 0.3s;
+}
+.search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: #999;
+}
