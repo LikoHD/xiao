@@ -37,9 +37,11 @@ function generateListCard(item) {
       </h2>
       
       <div class="description-container" style="color: #333333;  height: 100px;">
-        <div class="assistant-description" style="color: #333333; font-size: 15px; line-height: 1.4; height: 200px; overflow: hidden;">
-          ${truncatedContent}   
-        </div>
+        <a href="https://xiaobot.net/p/${item.id}?refer=a1be91e6-ff56-473b-8404-a6f1f5856dba" target="_blank" style="text-decoration: none; color: inherit;">
+          <div class="assistant-description" style="color: #333333; font-size: 15px; line-height: 1.4; height: 200px; overflow: hidden;">
+            ${truncatedContent}   
+          </div>
+        </a>
          <div style="display: flex; justify-content: space-between; font-size: 15px; line-height: 1.4;align-items: center; color: #5a5858; margin-bottom: 100px;">
             <p class="author">主理人: @<span class="author-name">${item.author}</span></p>
             <a href="https://xiaobot.net/p/${item.id}?refer=a1be91e6-ff56-473b-8404-a6f1f5856dba" target="_blank" style="color: #03a9f4; text-decoration: none;">详情</a>
