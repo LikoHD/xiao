@@ -47,9 +47,12 @@
     </header>
     
     <div class="content-wrapper">
-        <aside class="sidebar">
-            <h3>标签筛选</h3>
-            <div style="color: #a39c9c; height: calc(100vh - 64px); overflow-y: auto;" id="hashtagContainer"></div>
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-toggle">&#9776;</div>
+            <div class="sidebar-content">
+                <h3>标签筛选</h3>
+                <div style="color: #a39c9c; height: calc(100vh - 64px); overflow-y: auto;" id="hashtagContainer"></div>
+            </div>
         </aside>
         
         <main class="main-content" style="position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto;">
@@ -114,6 +117,17 @@
             generateHashtags();
             loadCards(); // 初始加载前20个卡片
             window.addEventListener('scroll', checkScroll);
+        });
+
+        // 侧边栏交互
+        const sidebar = document.getElementById('sidebar');
+        
+        sidebar.addEventListener('mouseenter', () => {
+            sidebar.classList.add('expanded');
+        });
+        
+        sidebar.addEventListener('mouseleave', () => {
+            sidebar.classList.remove('expanded');
         });
     </script>
 </body>
