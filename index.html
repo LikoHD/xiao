@@ -26,8 +26,7 @@
 <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "小报童专栏导航",
+      "@type": "WebSite",      "name": "小报童专栏导航",
       "url": "xiaobot101.com",
       "description": "在xiaobot101.com探索最新、最热门和最佳的小报童专栏。所有有用的小报童专栏都在这里。",
       "potentialAction": {
@@ -50,7 +49,7 @@
         </nav>
     </header>
     
-    <div class="content-wrapper">
+    
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-toggle">&#9776;</div>
             <div class="sidebar-content">
@@ -59,7 +58,8 @@
             </div>
         </aside>
         
-        <main class="main-content" style="position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto;">
+    
+        <main class="main-content" style="position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto;" onclick="closeSidebar()">
             <div>
                 <p class="title" style="margin-top: 5px; margin-bottom: 5px;">小报童专栏导航</p>
                 <p class="subtitle" style=" margin-bottom: 10px;">xiaobot101.com 超过400+ 个小报童专栏，帮助你找到想要的小报童专栏</p>  
@@ -77,11 +77,9 @@
                 <div id="assistantGrid" class="assistant-grid" style="display: flex; flex-wrap: wrap; justify-content: flex-start;">
                     <!-- 卡片内容 -->
                 </div>
-            </section>
-
-            
+            </section>   
         </main>
-    </div>
+        
 
     <footer style="background-color: #f4f4f4; padding: 20px 0; text-align: center; height: 100px ; bottom: 0; left: 0; right: 0; z-index: 100;">
         <p style="margin-bottom: 10px;">People follow people, not companies. 人们更愿意追随一个活生生的人,而非一个公司。</p>
@@ -123,16 +121,30 @@
             window.addEventListener('scroll', checkScroll);
         });
 
-        // 侧边栏交互
+        // 修改侧边栏交互逻辑
         const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.querySelector('.sidebar-toggle');
+        
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('expanded');
+        });
         
         sidebar.addEventListener('mouseenter', () => {
-            sidebar.classList.add('expanded');
+            if (!sidebar.classList.contains('expanded')) {
+                sidebar.classList.add('expanded');
+            }
         });
         
         sidebar.addEventListener('mouseleave', () => {
-            sidebar.classList.remove('expanded');
+            if (!sidebarToggle.contains(event.relatedTarget)) {
+                sidebar.classList.remove('expanded');
+            }
         });
+
+        function closeSidebar() {
+            sidebar.classList.remove('expanded');
+        }
     </script>
 </body>
 </html>
+
