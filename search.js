@@ -18,6 +18,13 @@ function generateHashtags() {
     const container = document.getElementById('hashtagContainer');
     const hashtagCounts = getUniqueHashtags();
     
+    // 添加“全部”选项
+    const allElement = document.createElement('div');
+    allElement.className = 'hashtag';
+    allElement.innerHTML = `#全部 <span style="color: #777; font-size: 0.9em;">(${data.length})</span>`;
+    allElement.onclick = () => showAll();
+    container.appendChild(allElement);
+
     Object.entries(hashtagCounts).forEach(([tag, count]) => {
         const hashtagElement = document.createElement('div');
         hashtagElement.className = 'hashtag';
@@ -51,16 +58,15 @@ function filterByHashtag(tag) {
     }
 }
 
-// 修改 filterByHashtag 函数
-function filterByHashtag(tag) {
-    filteredData = data.filter(item => item.classNames.includes(tag));
+// 添加以下函数
+function showAll() {
+    filteredData = [];
     currentIndex = 0;
     const container = document.getElementById('assistantGrid');
     container.innerHTML = '';
     loadCards();
     scrollToTop();
 }
-
 
 // 搜索框
 function filterAssistants() {

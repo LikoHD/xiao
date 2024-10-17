@@ -1,4 +1,19 @@
 /* 参考 bilibili 的配色和布局风格 */
+ /* 添加以下样式 */
+ .main-content {
+    max-width: 1200px; /* 设置最大宽度 */
+    margin: 64px auto 100px; /* 上边距64px, 左右自动居中, 下边距100px */
+    padding: 0 20px; /* 左右添加一些内边距 */
+}
+
+/* 调整网格布局 */
+.assistant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
