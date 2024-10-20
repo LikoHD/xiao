@@ -169,3 +169,33 @@ footer {
 .hashtag:hover {
     background-color: #d6d6d6;
 }
+
+/* 在style.css中添加导航样式 */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: #c9c2c2;
+    height: 64px;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+nav h1 {
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #333333;
+    white-space: nowrap;
+}
+
+nav h2 {
+    margin-left: auto;
+    margin-right: 24px;
+    color: #777474;
+    white-space: nowrap;
+    font-size: 18px;
+}
